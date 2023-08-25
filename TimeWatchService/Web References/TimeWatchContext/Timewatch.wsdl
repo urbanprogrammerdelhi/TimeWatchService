@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetVisitorID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVisitorIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVisitorIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVisitorIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVisitorID" />
+  </wsdl:message>
+  <wsdl:message name="GetVisitorIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVisitorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVisitorIDHttpGetIn" />
+  <wsdl:message name="GetVisitorIDHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetVisitorIDHttpPostIn" />
+  <wsdl:message name="GetVisitorIDHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="TimewatchSoap">
+    <wsdl:operation name="GetVisitorID">
+      <wsdl:input message="tns:GetVisitorIDSoapIn" />
+      <wsdl:output message="tns:GetVisitorIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TimewatchHttpGet">
+    <wsdl:operation name="GetVisitorID">
+      <wsdl:input message="tns:GetVisitorIDHttpGetIn" />
+      <wsdl:output message="tns:GetVisitorIDHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TimewatchHttpPost">
+    <wsdl:operation name="GetVisitorID">
+      <wsdl:input message="tns:GetVisitorIDHttpPostIn" />
+      <wsdl:output message="tns:GetVisitorIDHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TimewatchSoap" type="tns:TimewatchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVisitorID">
+      <soap:operation soapAction="http://tempuri.org/GetVisitorID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TimewatchSoap12" type="tns:TimewatchSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVisitorID">
+      <soap12:operation soapAction="http://tempuri.org/GetVisitorID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TimewatchHttpGet" type="tns:TimewatchHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetVisitorID">
+      <http:operation location="/GetVisitorID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TimewatchHttpPost" type="tns:TimewatchHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetVisitorID">
+      <http:operation location="/GetVisitorID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Timewatch">
+    <wsdl:port name="TimewatchSoap" binding="tns:TimewatchSoap">
+      <soap:address location="https://ifm360.in/ivm360/WebService/Timewatch.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TimewatchSoap12" binding="tns:TimewatchSoap12">
+      <soap12:address location="https://ifm360.in/ivm360/WebService/Timewatch.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TimewatchHttpGet" binding="tns:TimewatchHttpGet">
+      <http:address location="https://ifm360.in/ivm360/WebService/Timewatch.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TimewatchHttpPost" binding="tns:TimewatchHttpPost">
+      <http:address location="https://ifm360.in/ivm360/WebService/Timewatch.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
